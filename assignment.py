@@ -1,5 +1,4 @@
 # Ticket Price System 
-
 from abc import ABC, abstractmethod
 
 class Seat(ABC):
@@ -19,8 +18,7 @@ class Premium(Seat):
 class Vip(Seat):
     def ticket_price(self):
         return 120_000
-
-
+        
 class TicketSystem:
     def __init__(self):
         self.bookings = []   # list of Seat objects
@@ -32,7 +30,6 @@ class TicketSystem:
         ticket.print_ticket(self.bookings)
         qrsender.send(self.bookings)
     
-
 class Ticket(ABC):
     @abstractmethod
     def print_ticket(self, bookings): ...
@@ -50,9 +47,6 @@ class TelegramQrSender(QrSender):
     def send(self, bookings):
         for booking in bookings:
             print(f"[QR → {booking.viewer}] Show this at entrance. Paid {booking.ticket_price()} so'm")
-
-
-
 
 cinema = TicketSystem()
 cinema.add(Standard("Anakin"))
